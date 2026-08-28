@@ -1,0 +1,4 @@
+interface:
+  display_name: "HiAgent 工作流开发"
+  short_description: "构建、校验和排查 HiAgent 工作流 JSON"
+  default_prompt: "使用 $hiagent-workflow-builder 构建或检查一个可导入的 HiAgent 工作流 JSON。"
