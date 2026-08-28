@@ -1,4 +1,4 @@
-# CSair HiAgent Workflow Skill
+# Csair HiAgent Workflow Skill
 
 用于辅助 Codex 构建、修改、校验和排查 HiAgent 工作流 JSON。它来自对 HiAgent v2.1 相关文档、工作流导出文件、成功导入结果和部分运行探测的脱敏总结，不是 HiAgent 全平台、全版本的完整规范。
 
