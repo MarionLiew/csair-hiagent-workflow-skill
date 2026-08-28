@@ -5,7 +5,7 @@ description: Build, modify, validate, and troubleshoot importable HiAgent workfl
 
 # HiAgent Workflow Builder
 
-Create an import-ready JSON workflow while preserving the user's business objective and the platform's verified serialization format.
+Create a complete JSON workflow that can be imported and used in HiAgent, while preserving the user's business objective and the platform's verified serialization format.
 
 ## Evidence boundary
 
@@ -24,11 +24,11 @@ Never place probes, HAR files, request/response dumps, cookies, tokens, login da
 2. Map the desired flow, branches, node dependencies, and output fields before changing JSON.
 3. Keep prompts in LLM prompt fields. Code nodes should transform or route data, not hide large role prompts unless the verified platform format requires it.
 4. For every variable reference, verify the source node exists, precedes the consumer, and declares the referenced output field.
-5. Generate one plain `.json` import file unless the user explicitly requests another package format.
-6. Run `scripts/validate_workflow.py` and syntax-check embedded JavaScript before delivery.
-7. Clearly separate static validation from runtime verification. A successful JSON parse does not prove plugin credentials, knowledge-base bindings, model availability, or UI rendering.
+5. Produce a fully connected workflow with usable prompts, branches, error handling, and final output—not a node skeleton or conceptual example.
+6. Generate one plain `.json` import file unless the user explicitly requests another package format.
+7. Run `scripts/validate_workflow.py` and syntax-check embedded JavaScript before delivery. Preserve or clearly identify environment bindings that the importer must select, such as a knowledge base, model, or plugin account.
 
-Read [references/verified-scope.md](references/verified-scope.md) before promising node support. Read [references/node-contracts.md](references/node-contracts.md) when building or rewiring nodes. Read [references/troubleshooting.md](references/troubleshooting.md) for an import/runtime failure. Read [references/product-design.md](references/product-design.md) when designing a user-facing assistant rather than making a narrow format repair.
+Read [references/verified-scope.md](references/verified-scope.md) only when a task introduces an unfamiliar node or platform feature. Read [references/node-contracts.md](references/node-contracts.md) when building or rewiring nodes. Read [references/troubleshooting.md](references/troubleshooting.md) for an import/runtime failure. Read [references/product-design.md](references/product-design.md) when designing a user-facing assistant rather than making a narrow format repair.
 
 ## Non-negotiable checks
 
@@ -44,4 +44,4 @@ Read [references/verified-scope.md](references/verified-scope.md) before promisi
 
 ## Delivery
 
-State what was statically validated, what still requires import/runtime testing, and identify any field that was deliberately preserved because its serialization is not verified.
+Deliver the ready-to-import JSON first. Briefly mention only environment bindings or runtime checks that the recipient actually needs to complete.
