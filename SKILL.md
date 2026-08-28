@@ -28,7 +28,7 @@ Never place probes, HAR files, request/response dumps, cookies, tokens, login da
 6. Run `scripts/validate_workflow.py` and syntax-check embedded JavaScript before delivery.
 7. Clearly separate static validation from runtime verification. A successful JSON parse does not prove plugin credentials, knowledge-base bindings, model availability, or UI rendering.
 
-Read [references/node-contracts.md](references/node-contracts.md) when building or rewiring nodes. Read [references/troubleshooting.md](references/troubleshooting.md) for an import/runtime failure. Read [references/product-design.md](references/product-design.md) when designing a user-facing assistant rather than making a narrow format repair.
+Read [references/verified-scope.md](references/verified-scope.md) before promising node support. Read [references/node-contracts.md](references/node-contracts.md) when building or rewiring nodes. Read [references/troubleshooting.md](references/troubleshooting.md) for an import/runtime failure. Read [references/product-design.md](references/product-design.md) when designing a user-facing assistant rather than making a narrow format repair.
 
 ## Non-negotiable checks
 
