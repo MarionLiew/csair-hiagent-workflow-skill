@@ -2,6 +2,12 @@
 
 Exact field names and enum values must come from a current export for the target HiAgent version.
 
+## Field names and casing
+
+- HiAgent serialization is case-sensitive. Verified workflow exports use `Name`, `Nodes`, and `Configs`, not lowercase substitutes such as `name` or a generic `Params` object.
+- Node-specific configuration is nested under its actual type key, for example `Configs.LLM` and `Configs.Code`.
+- Do not add UI-only fields such as a localized Start `Title` unless they appear in a working export.
+
 ## Identity and topology
 
 - Each node has a unique identity. In observed exports, `ID` and `Code` may be equal; preserve the convention used by the source export.
@@ -17,12 +23,14 @@ A node-field reference normally needs a source node code, a source field path, a
 
 - Declare every `params.name` as an input variable and every returned property needed downstream in the output schema.
 - JSON escaping and JavaScript escaping are separate layers. Syntax-check the final JavaScript extracted from generated JSON.
+- The embedded program in `Configs.Code.Code` is subject to a deployment-specific database length limit. Measure UTF-8 bytes, keep code focused, and use smaller nodes or LLM prompts instead of embedding long prose or data.
 
 ## LLM nodes
 
 - Put stable role, policy, evidence boundaries, and output requirements in the system prompt.
 - Put the per-run question and referenced variables in the user prompt.
 - Match output format and output schema. Text answers should not be forced through JSON unless downstream logic needs structured data.
+- When `OutputSchema` is present, use the HiAgent parameter array found in a verified export. A generic JSON Schema object is incompatible with deployments expecting `[]*node.Parameters`; omit the field rather than inventing a shape.
 
 ## Variable aggregation
 
